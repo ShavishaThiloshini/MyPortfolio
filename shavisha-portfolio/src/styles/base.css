@@ -8,6 +8,7 @@ html {
   min-height: 100%;
   color-scheme: dark;
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
