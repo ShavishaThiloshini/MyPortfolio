@@ -1,7 +1,7 @@
 function App() {
   return (
-    <main>
-      <h1>Shavisha Thiloshini</h1>
+    <main className="page-wrap min-h-dvh bg-background text-primary-text">
+      <h1 className="font-heading text-heading">Shavisha Thiloshini</h1>
     </main>
   )
 }
