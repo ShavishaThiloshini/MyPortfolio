@@ -86,3 +86,12 @@
     transform: scale(0.98);
   }
 }
+
+@utility bg-gradient-subtle {
+  background: linear-gradient(
+    135deg,
+    var(--color-background) 0%,
+    var(--color-secondary) 50%,
+    var(--color-background) 100%
+  );
+}
