@@ -49,7 +49,7 @@ export default function Home() {
             I build accessible, pixel-perfect, and performant web experiences
             with a focus on clean design and thoughtful user interactions.
           </p>
-          <div className="flex flex-wrap gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <a
               href="#projects"
               className="btn btn-primary"

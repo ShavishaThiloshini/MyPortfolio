@@ -93,7 +93,7 @@ export default function Navigation() {
         </a>
 
         <nav
-          className="hidden items-center gap-5 xl:flex"
+          className="hidden items-center gap-5 lg:flex"
           aria-label="Primary"
         >
           {navLinks.map((link) => (
@@ -108,14 +108,14 @@ export default function Navigation() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a href="#resume" className="btn btn-primary px-4 py-2 text-meta">
+          <a href="#resume" className="btn btn-primary px-4 py-2 text-meta hidden sm:inline-flex">
             Download CV
           </a>
 
           <button
             ref={menuButtonRef}
             type="button"
-            className="inline-flex size-10 items-center justify-center rounded-md text-primary-text xl:hidden"
+            className="inline-flex size-10 items-center justify-center rounded-md text-primary-text lg:hidden"
             aria-expanded={isMenuOpen}
             aria-controls={menuId}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
@@ -128,7 +128,7 @@ export default function Navigation() {
 
       <div
         id={menuId}
-        className={`page-wrap overflow-hidden transition-base xl:hidden ${
+        className={`page-wrap overflow-hidden transition-base lg:hidden ${
           isMenuOpen
             ? 'max-h-screen pb-6 opacity-100'
             : 'pointer-events-none max-h-0 opacity-0'

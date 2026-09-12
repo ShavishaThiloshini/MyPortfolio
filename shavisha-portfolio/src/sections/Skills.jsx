@@ -25,7 +25,7 @@ export default function Skills() {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {skills.map((category) => (
-            <div
+            <article
               key={category.id}
               className="surface-card transition-base hover:translate-y-[-4px] hover:border-accent"
             >
@@ -45,7 +45,7 @@ export default function Skills() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </article>
           ))}
         </div>
       </div>

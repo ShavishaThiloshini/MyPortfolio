@@ -35,9 +35,9 @@ export default function Projects() {
 
         {/* Additional Projects */}
         {additionalProjects.length > 0 && (
-          <div>
+          <section aria-labelledby="additional-projects-heading">
             <div className="mb-12">
-              <h3 className="font-heading text-title text-primary-text">
+              <h3 id="additional-projects-heading" className="font-heading text-title text-primary-text">
                 Additional Projects
               </h3>
             </div>
@@ -46,7 +46,7 @@ export default function Projects() {
                 <ProjectCard key={project.id} project={project} />
               ))}
             </div>
-          </div>
+          </section>
         )}
       </div>
     </section>
