@@ -17,7 +17,7 @@ const experience = [
   {
     id: 'hackathon-participation',
     title: 'Hackathon Participant',
-    organization: 'Tech Competition',
+    organization: 'University Hackathon 2025',
     year: 2025,
     type: 'Hackathon',
     description:
