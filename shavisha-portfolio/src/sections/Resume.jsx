@@ -27,7 +27,7 @@ export default function Resume() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/Shavisha-Thiloshini-CV.pdf"
+              href="/Shavisha_Thiloshini_CV.pdf"
               download
               className="btn btn-primary inline-flex items-center gap-2 mx-auto sm:mx-0"
             >
