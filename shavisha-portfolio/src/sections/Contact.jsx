@@ -16,7 +16,7 @@ export default function Contact() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       >
-        <div className="max-w-3xl text-center">
+        <div className="max-w-3xl">
           <p className="text-label mb-4">Contact</p>
           <h2 id="contact-heading" className="font-heading text-heading mb-4">
             Let's Build Something
@@ -26,7 +26,7 @@ export default function Contact() {
             from you.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap gap-4">
             {socialLinks.map((link) => (
               <a
                 key={link.name}

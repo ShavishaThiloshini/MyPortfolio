@@ -16,7 +16,7 @@ export default function Resume() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       >
-        <div className="max-w-3xl text-center">
+        <div className="max-w-3xl">
           <p className="text-label mb-4">Resume</p>
           <h2 id="resume-heading" className="font-heading text-heading mb-6">
             Ready to Know More?
@@ -25,18 +25,18 @@ export default function Resume() {
             Download my complete CV to learn more about my education, experience,
             skills, and projects.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4">
             <a
               href="/Shavisha_Thiloshini_CV.pdf"
               download
-              className="btn btn-primary inline-flex items-center gap-2 mx-auto sm:mx-0"
+              className="btn btn-primary inline-flex items-center gap-2"
             >
               <Download size={18} />
               Download My CV
             </a>
             <a
               href="mailto:shavishathiloshini16@gmail.com?subject=CV Request&body=Hi Shavisha, I would like to request your CV."
-              className="btn btn-secondary inline-flex items-center gap-2 mx-auto sm:mx-0"
+              className="btn btn-secondary inline-flex items-center gap-2"
             >
               <Mail size={18} />
               Request via Email
