@@ -1,17 +1,50 @@
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
+import { ExternalLink, X } from 'lucide-react'
+import SocialIcon from '../components/common/SocialIcon'
 import projects from '../data/projects'
 import useScrollReveal from '../hooks/useScrollReveal'
-import { ExternalLink } from 'lucide-react'
 
 export default function Projects() {
   const [ref, isVisible] = useScrollReveal()
-  const featuredProjects = projects.filter((p) => p.featured)
-  const additionalProjects = projects.filter((p) => !p.featured)
+  const [selectedProject, setSelectedProject] = useState(null)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  )
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const listener = (e) => setPrefersReducedMotion(e.matches)
+    mediaQuery.addEventListener('change', listener)
+    return () => mediaQuery.removeEventListener('change', listener)
+  }, [])
+
+  // Close modal on escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setSelectedProject(null)
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [selectedProject])
 
   return (
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="page-wrap section-space scroll-mt-24"
+      className="page-wrap section-space scroll-mt-24 relative"
     >
       <div
         ref={ref}
@@ -26,186 +59,88 @@ export default function Projects() {
           </h2>
         </div>
 
-        {/* Featured Projects */}
-        <div className="space-y-24 mb-24">
-          {featuredProjects.map((project, index) => (
-            <FeaturedProject key={project.id} project={project} index={index} />
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 perspective-[1000px]">
+          {projects.map((project, index) => (
+            <ProjectCard 
+              key={project.id} 
+              project={project} 
+              index={index} 
+              onClick={() => setSelectedProject(project)}
+              prefersReducedMotion={prefersReducedMotion}
+            />
           ))}
         </div>
-
-        {/* Additional Projects */}
-        {additionalProjects.length > 0 && (
-          <section aria-labelledby="additional-projects-heading">
-            <div className="mb-12">
-              <h3 id="additional-projects-heading" className="font-heading text-title text-primary-text">
-                Additional Projects
-              </h3>
-            </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {additionalProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          </section>
-        )}
       </div>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectModal 
+            project={selectedProject} 
+            onClose={() => setSelectedProject(null)} 
+          />
+        )}
+      </AnimatePresence>
     </section>
   )
 }
 
-function FeaturedProject({ project, index }) {
-  const [projectRef, isVisible] = useScrollReveal()
+function ProjectCard({ project, index, onClick, prefersReducedMotion }) {
+  const [itemRef, isVisible] = useScrollReveal()
 
   return (
-    <div
-      ref={projectRef}
-      className={`transition-slow ${
+    <motion.div
+      ref={itemRef}
+      whileHover={!prefersReducedMotion ? { scale: 1.02, rotateX: 2, rotateY: -2, y: -4 } : { y: -4 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      onClick={onClick}
+      className={`surface-card cursor-pointer flex flex-col h-full border-border hover:border-accent hover:shadow-glow transition-slow ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
+      style={{ 
+        transformStyle: 'preserve-3d',
+        transitionDelay: prefersReducedMotion ? '0ms' : `${index * 50}ms`
+      }}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onClick()
+        }
+      }}
+      aria-label={`View details for ${project.title}`}
     >
-      <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-start">
-        {/* Project Visual */}
-        <div className="relative group">
-          <div className="aspect-video surface-card overflow-hidden bg-gradient-subtle flex items-center justify-center">
-            <div className="text-center select-none">
-              <p className="font-heading text-display font-bold opacity-[0.06] leading-none">
-                {(index + 1).toString().padStart(2, '0')}
-              </p>
-              <p className="text-meta text-muted-text mt-2 tracking-widest uppercase">
-                {project.category}
-              </p>
-            </div>
-          </div>
-          <div className="absolute top-4 left-4">
-            <span className="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-medium">
-              {(index + 1).toString().padStart(2, '0')}
-            </span>
-          </div>
-        </div>
-
-        {/* Project Content */}
-        <div className="space-y-6">
-          <div>
-            <div className="flex items-center gap-3 mb-3">
-              <span className="text-meta text-accent font-medium">
-                {project.category}
-              </span>
-            </div>
-            <h3 className="font-heading text-title lg:text-heading text-primary-text mb-3">
-              {project.title}
-            </h3>
-            <p className="text-body text-secondary-text">
-              {project.shortDescription}
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-heading text-body font-semibold text-primary-text mb-2">
-              What I Built
-            </h4>
-            <p className="text-body text-secondary-text">
-              {project.fullDescription}
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-heading text-body font-semibold text-primary-text mb-2">
-              Technologies
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {project.technologies.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-3 py-1 rounded-full bg-surface border border-border text-meta text-secondary-text"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h4 className="font-heading text-body font-semibold text-primary-text mb-2">
-              Key Features
-            </h4>
-            <ul className="space-y-2">
-              {project.features.slice(0, 3).map((feature) => (
-                <li
-                  key={feature}
-                  className="text-body text-secondary-text flex items-start gap-2"
-                >
-                  <span className="text-accent mt-1.5">•</span>
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-heading text-body font-semibold text-primary-text mb-2">
-              My Contribution
-            </h4>
-            <p className="text-body text-secondary-text">
-              {project.contribution}
-            </p>
-          </div>
-
-          <div className="flex gap-4 pt-4">
-            {project.links.github && (
-              <a
-                href={project.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary inline-flex items-center gap-2"
-              >
-                <span>⤴</span>
-                GitHub
-              </a>
-            )}
-            {project.links.live && (
-              <a
-                href={project.links.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary inline-flex items-center gap-2"
-              >
-                <ExternalLink size={18} />
-                Live Demo
-              </a>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function ProjectCard({ project }) {
-  return (
-    <div className="surface-card transition-base hover:translate-y-[-4px] hover:border-accent group">
-      <div className="aspect-video bg-gradient-subtle mb-4 overflow-hidden flex items-center justify-center rounded-md">
+      <div 
+        className="aspect-video bg-gradient-subtle mb-6 overflow-hidden flex items-center justify-center rounded-md border border-border/50"
+        style={{ transform: !prefersReducedMotion ? 'translateZ(20px)' : 'none' }}
+      >
         <div className="text-center select-none">
           <p className="font-heading font-bold opacity-[0.07] leading-none" style={{ fontSize: 'clamp(2rem, 8vw, 4rem)' }}>
             {project.title.slice(0, 2).toUpperCase()}
           </p>
-          <p className="text-meta text-muted-text mt-1 tracking-widest uppercase text-xs">
+          <p className="text-meta text-muted-text mt-2 tracking-widest uppercase text-xs">
             {project.category}
           </p>
         </div>
       </div>
-      <div className="space-y-3">
-        <div>
+      
+      <div 
+        className="flex flex-col flex-grow"
+        style={{ transform: !prefersReducedMotion ? 'translateZ(30px)' : 'none' }}
+      >
+        <div className="mb-3">
           <span className="text-meta text-accent font-medium">
             {project.category}
           </span>
-          <h4 className="font-heading text-title text-primary-text mt-1">
+          <h3 className="font-heading text-title text-primary-text mt-1">
             {project.title}
-          </h4>
+          </h3>
         </div>
-        <p className="text-body text-secondary-text line-clamp-2">
+        <p className="text-body text-secondary-text line-clamp-2 mb-6 flex-grow">
           {project.shortDescription}
         </p>
-        <div className="flex flex-wrap gap-2">
+        
+        <div className="flex flex-wrap gap-2 mt-auto">
           {project.technologies.slice(0, 3).map((tech) => (
             <span
               key={tech}
@@ -214,8 +149,142 @@ function ProjectCard({ project }) {
               {tech}
             </span>
           ))}
+          {project.technologies.length > 3 && (
+            <span className="px-2 py-1 rounded-full bg-surface border border-border text-xs text-secondary-text">
+              +{project.technologies.length - 3}
+            </span>
+          )}
         </div>
       </div>
+    </motion.div>
+  )
+}
+
+function ProjectModal({ project, onClose }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-8 sm:p-6 md:p-12">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+      />
+      
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto surface-card shadow-2xl z-10 flex flex-col"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 p-2 rounded-full bg-surface border border-border text-secondary-text hover:text-accent hover:border-accent transition-base z-20"
+          aria-label="Close modal"
+        >
+          <X size={20} />
+        </button>
+
+        <div className="grid gap-8 lg:grid-cols-2 p-2 sm:p-4 mt-8 sm:mt-0">
+          <div className="flex flex-col h-full">
+            <div className="aspect-video bg-gradient-subtle overflow-hidden flex items-center justify-center rounded-lg border border-border mb-6">
+              <div className="text-center select-none">
+                <p className="font-heading font-bold opacity-[0.05] leading-none" style={{ fontSize: 'clamp(4rem, 12vw, 8rem)' }}>
+                  {project.title.slice(0, 2).toUpperCase()}
+                </p>
+                <p className="text-meta text-muted-text mt-2 tracking-widest uppercase">
+                  {project.category}
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 mt-auto pt-4">
+              {project.links.github && (
+                <a
+                  href={project.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary inline-flex items-center justify-center gap-2 flex-1"
+                >
+                  <SocialIcon name="GitHub" size={18} />
+                  GitHub
+                </a>
+              )}
+              {project.links.live && (
+                <a
+                  href={project.links.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary inline-flex items-center justify-center gap-2 flex-1"
+                >
+                  <ExternalLink size={18} />
+                  Live Demo
+                </a>
+              )}
+            </div>
+          </div>
+
+          <div className="space-y-8">
+            <div>
+              <span className="text-meta text-accent font-medium mb-2 block">
+                {project.category}
+              </span>
+              <h2 id="modal-title" className="font-heading text-display lg:text-heading text-primary-text mb-4 leading-tight">
+                {project.title}
+              </h2>
+              <p className="text-body text-secondary-text text-lg">
+                {project.shortDescription}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-heading text-title font-semibold text-primary-text mb-3">
+                Overview
+              </h3>
+              <p className="text-body text-secondary-text">
+                {project.fullDescription}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-heading text-title font-semibold text-primary-text mb-3">
+                Key Features
+              </h3>
+              <ul className="space-y-2">
+                {project.features.map((feature) => (
+                  <li
+                    key={feature}
+                    className="text-body text-secondary-text flex items-start gap-3"
+                  >
+                    <span className="text-accent mt-1">•</span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-heading text-title font-semibold text-primary-text mb-3">
+                Technologies
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1.5 rounded-full bg-surface border border-border text-meta text-secondary-text"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </div>
   )
 }

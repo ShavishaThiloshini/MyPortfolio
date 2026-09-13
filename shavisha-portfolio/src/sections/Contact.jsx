@@ -18,7 +18,7 @@ export default function Contact() {
       >
         <div className="max-w-3xl">
           <p className="text-label mb-4">Contact</p>
-          <h2 id="contact-heading" className="font-heading text-heading mb-4">
+          <h2 id="contact-heading" className="font-heading text-heading mb-8">
             Let's Build Something
           </h2>
           <p className="text-body text-secondary-text mb-12">
@@ -26,7 +26,7 @@ export default function Contact() {
             from you.
           </p>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-6">
             {socialLinks.map((link) => (
               <a
                 key={link.name}

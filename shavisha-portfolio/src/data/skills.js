@@ -3,9 +3,9 @@ const skills = [
     id: 'frontend',
     title: 'Frontend Development',
     skills: [
-      { name: 'HTML', level: 'Foundational' },
-      { name: 'CSS', level: 'Foundational' },
-      { name: 'JavaScript', level: 'Foundational' },
+      { name: 'HTML', level: 'Project Experience' },
+      { name: 'CSS', level: 'Project Experience' },
+      { name: 'JavaScript', level: 'Project Experience' },
       { name: 'React', level: 'Project Experience' },
       { name: 'Tailwind CSS', level: 'Project Experience' },
     ],
@@ -37,9 +37,9 @@ const skills = [
     id: 'tools',
     title: 'Tools',
     skills: [
-      { name: 'Git', level: 'Foundational' },
-      { name: 'GitHub', level: 'Foundational' },
-      { name: 'MS Office', level: 'Foundational' },
+      { name: 'Git', level: 'Project Experience' },
+      { name: 'GitHub', level: 'Project Experience' },
+      { name: 'MS Office', level: 'Project Experience' },
     ],
   },
 ]

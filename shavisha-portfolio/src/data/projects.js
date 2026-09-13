@@ -1,25 +1,25 @@
 const projects = [
   {
-    id: 'frogfocus',
-    title: 'FrogFocus',
-    category: 'Productivity',
-    shortDescription: 'Study session timer application with focus tracking',
-    fullDescription: 'A productivity application designed to help students manage their study sessions effectively. The app provides timed focus sessions, breaks, and progress tracking to optimize learning patterns.',
-    problem: 'Students often struggle with maintaining focus during study sessions and managing their time effectively across different subjects.',
-    solution: 'Built a timer-based application with customizable session lengths, break reminders, and progress visualization to help users develop better study habits.',
-    technologies: ['React', 'Tailwind CSS', 'Supabase', 'PostgreSQL'],
+    id: 'gt-ministries',
+    title: 'GT Ministries',
+    category: 'Web Design',
+    shortDescription: 'Modern landing page for GT Visual Ministries',
+    fullDescription: 'A responsive, beautifully designed landing page created for GT Visual Ministries to showcase their services and improve their online presence.',
+    problem: 'The organization lacked a modern, engaging web presence that effectively communicated their mission and visual media services.',
+    solution: 'Designed and developed a sleek, fast-loading landing page with high-quality media integration and clear calls to action.',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
     features: [
-      'Customizable focus and break timers',
-      'Session history and statistics',
-      'Progress tracking across multiple subjects',
-      'Responsive design for mobile and desktop',
-      'User authentication and data persistence'
+      'Modern, clean UI/UX design',
+      'Responsive layout for all devices',
+      'Smooth scroll animations',
+      'Integrated media galleries',
+      'Contact and booking sections'
     ],
-    contribution: 'Developed the complete frontend interface, implemented timer functionality, designed the UI/UX, and integrated with Supabase for data management.',
-    image: '/images/projects/frogfocus.jpg',
+    contribution: 'Handled the entire design and frontend development process from conceptualization to deployment.',
+    image: '/images/projects/gt-ministries.jpg',
     links: {
-      github: 'https://github.com/ShavishaThiloshini/FrogFocus',
-      live: null
+      github: 'https://github.com/ShavishaThiloshini/GT-Visual-Ministries',
+      live: 'https://gtvisualministries.netlify.app/'
     },
     featured: true
   },
@@ -42,7 +42,7 @@ const projects = [
     contribution: 'Contributed to frontend development, patient management interface, and appointment scheduling features.',
     image: '/images/projects/smart-clinic.jpg',
     links: {
-      github: null,
+      github: 'https://github.com/ShavishaThiloshini/Smart_Clinic',
       live: null
     },
     featured: true
@@ -66,82 +66,58 @@ const projects = [
     contribution: 'Developed the destination browsing interface, implemented search functionality, and contributed to the trip planning features.',
     image: '/images/projects/zoneedan.jpg',
     links: {
-      github: null,
-      live: null
+      github: 'https://github.com/ShavishaThiloshini/ZoneEdan',
+      live: 'https://zoneedan.netlify.app/'
     },
     featured: true
   },
   {
-    id: 'cosmokeys',
-    title: 'CosmoKeys',
-    category: 'Interactive',
-    shortDescription: 'Interactive music and piano application',
-    fullDescription: 'An interactive web application that allows users to explore music through a virtual piano interface and interactive musical experiences.',
-    problem: 'Many people want to explore music and piano playing but lack access to instruments or structured learning environments.',
-    solution: 'Created an accessible web-based piano interface with interactive features that make music exploration engaging and educational.',
-    technologies: ['React', 'Web Audio API', 'Tailwind CSS'],
+    id: 'chikolata',
+    title: 'Chikolata',
+    category: 'E-Commerce / Dining',
+    shortDescription: 'Restaurant landing page for Chikolata',
+    fullDescription: 'An elegant, appetizing restaurant landing page built to showcase the menu, atmosphere, and dining experience at Chikolata.',
+    problem: 'The restaurant needed a digital storefront that reflected the premium quality of their desserts and dining experience.',
+    solution: 'Created an immersive, visually appealing website with menu showcases, reservation information, and location details.',
+    technologies: ['React', 'Tailwind CSS', 'Framer Motion'],
     features: [
-      'Virtual piano keyboard with realistic sounds',
-      'Interactive music lessons and tutorials',
-      'Recording and playback functionality',
-      'Visual feedback for note learning',
-      'Accessible touch and keyboard controls'
+      'Appetizing visual design and layout',
+      'Interactive menu sections',
+      'Smooth page transitions',
+      'Responsive mobile optimization',
+      'Location and reservation details'
     ],
-    contribution: 'Implemented the virtual piano interface using Web Audio API, designed the interactive lessons, and ensured responsive accessibility.',
-    image: '/images/projects/cosmokeys.jpg',
+    contribution: 'Led the UI design and frontend implementation, focusing on visual hierarchy and performance.',
+    image: '/images/projects/chikolata.jpg',
     links: {
-      github: null,
-      live: null
+      github: 'https://github.com/ShavishaThiloshini/cikolata-restaurant-website',
+      live: 'https://cikolata-portfolio.netlify.app/'
     },
     featured: true
   },
   {
-    id: 'penny-forest',
-    title: 'Penny Forest',
-    category: 'Finance',
-    shortDescription: 'Personal finance tracking application',
-    fullDescription: 'A personal finance tracking application that helps users monitor expenses, set savings goals, and visualize their financial health.',
-    problem: 'Individuals often struggle to track their spending habits and maintain awareness of their financial goals and progress.',
-    solution: 'Built a user-friendly finance tracker with expense categorization, goal setting, and visual dashboards for financial awareness.',
-    technologies: ['React', 'Chart.js', 'LocalStorage'],
+    id: 'lumora-vex',
+    title: 'Lumora Vex',
+    category: 'Photography',
+    shortDescription: 'Photography portfolio website',
+    fullDescription: 'A minimalist, image-focused portfolio website designed for a photography studio to display their best work and client sessions.',
+    problem: 'The photographer required a platform where the images stood out without being distracted by heavy UI elements.',
+    solution: 'Developed a minimalist gallery-style portfolio with optimized image loading and subtle interactive states.',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Grid Layout'],
     features: [
-      'Expense tracking and categorization',
-      'Savings goal setting and progress tracking',
-      'Visual charts and financial dashboards',
-      'Monthly and yearly reports',
-      'Local data storage for privacy'
+      'Minimalist, distraction-free UI',
+      'Responsive image grid galleries',
+      'Lightweight and fast loading',
+      'Accessible image navigation',
+      'Contact and booking forms'
     ],
-    contribution: 'Developed the expense tracking interface, implemented chart visualizations, and created the goal-setting functionality.',
-    image: '/images/projects/penny-forest.jpg',
+    contribution: 'Responsible for the end-to-end frontend development, ensuring high performance for media-heavy pages.',
+    image: '/images/projects/lumora-vex.jpg',
     links: {
-      github: null,
-      live: null
+      github: 'https://github.com/ShavishaThiloshini/lumora-vex-photography-portfolio',
+      live: 'https://lumora-vex.netlify.app/'
     },
-    featured: false
-  },
-  {
-    id: 'habity',
-    title: 'Habity',
-    category: 'Productivity',
-    shortDescription: 'Habit tracking and building application',
-    fullDescription: 'A habit tracking application designed to help users build and maintain positive habits through consistent tracking and motivation.',
-    problem: 'Building new habits is challenging, and many people struggle with consistency and motivation when trying to establish positive routines.',
-    solution: 'Created a habit tracker with streak tracking, reminders, progress visualization, and motivational elements to support habit formation.',
-    technologies: ['React', 'Tailwind CSS', 'LocalStorage'],
-    features: [
-      'Daily habit tracking and check-ins',
-      'Streak counting and motivation',
-      'Custom habit creation and management',
-      'Progress visualization and statistics',
-      'Reminder notifications'
-    ],
-    contribution: 'Built the habit tracking interface, implemented streak logic, and designed the progress visualization components.',
-    image: '/images/projects/habity.jpg',
-    links: {
-      github: null,
-      live: null
-    },
-    featured: false
+    featured: true
   }
 ]
 

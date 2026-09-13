@@ -18,14 +18,14 @@ export default function Resume() {
       >
         <div className="max-w-3xl">
           <p className="text-label mb-4">Resume</p>
-          <h2 id="resume-heading" className="font-heading text-heading mb-6">
+          <h2 id="resume-heading" className="font-heading text-heading mb-8">
             Ready to Know More?
           </h2>
-          <p className="text-body text-secondary-text mb-8">
+          <p className="text-body text-secondary-text mb-12">
             Download my complete CV to learn more about my education, experience,
             skills, and projects.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-6">
             <a
               href="/Shavisha_Thiloshini_CV.pdf"
               download
