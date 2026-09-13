@@ -1,6 +1,6 @@
 import { ArrowRight, Download } from 'lucide-react'
 import SocialIcon from '../components/common/SocialIcon'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import HeroScene from '../components/3d/HeroScene'
 import socialLinks from '../data/socialLinks'
 import useMousePosition from '../hooks/useMousePosition'
@@ -9,17 +9,13 @@ import useWebGL from '../hooks/useWebGL'
 export default function Home() {
   const mousePosition = useMousePosition()
   const isWebGLAvailable = useWebGL()
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-    setPrefersReducedMotion(mediaQuery.matches)
-
-    const handleChange = (e) => setPrefersReducedMotion(e.matches)
-    mediaQuery.addEventListener('change', handleChange)
-
-    return () => mediaQuery.removeEventListener('change', handleChange)
-  }, [])
+  // Initialize synchronously to avoid a flash/layout shift.
+  const [prefersReducedMotion] = useState(
+    () =>
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  )
 
   const shouldShow3D = isWebGLAvailable && !prefersReducedMotion
 
@@ -59,9 +55,10 @@ export default function Home() {
               <ArrowRight size={18} />
             </a>
             <a
-              href="#resume"
+              href="/Shavisha_Thiloshini_CV.pdf"
+              download
               className="btn btn-secondary"
-              aria-label="Download CV"
+              aria-label="Download CV as PDF"
             >
               <Download size={18} />
               <span>Download CV</span>
@@ -86,6 +83,7 @@ export default function Home() {
 
       <div
         className="absolute inset-0 -z-20"
+        aria-hidden="true"
         style={{ background: 'var(--gradient-hero)' }}
       />
     </section>

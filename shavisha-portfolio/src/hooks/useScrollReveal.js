@@ -1,25 +1,24 @@
 import { useEffect, useRef, useState } from 'react'
 
+/**
+ * Custom hook that observes when a ref enters the viewport and sets
+ * isVisible to true. Respects prefers-reduced-motion by immediately
+ * marking as visible (skipping the animation) when the user prefers
+ * reduced motion.
+ */
 export default function useScrollReveal() {
-  const [isVisible, setIsVisible] = useState(false)
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  // Initialize synchronously so there's no extra render cycle.
+  const [prefersReducedMotion] = useState(
+    () =>
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  )
+  const [isVisible, setIsVisible] = useState(prefersReducedMotion)
   const ref = useRef(null)
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-    setPrefersReducedMotion(mediaQuery.matches)
-
-    const handleChange = (e) => setPrefersReducedMotion(e.matches)
-    mediaQuery.addEventListener('change', handleChange)
-
-    return () => mediaQuery.removeEventListener('change', handleChange)
-  }, [])
-
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      setIsVisible(true)
-      return
-    }
+    // If reduced motion is already set, nothing to observe.
+    if (prefersReducedMotion) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {

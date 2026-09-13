@@ -1,44 +1,41 @@
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { Suspense, useRef, useState, useEffect } from 'react'
-import * as THREE from 'three'
 
+/**
+ * Returns whether the media query currently matches.
+ * Uses a stable effect (no match in deps) to avoid double-firing.
+ */
 function useMediaQuery(query) {
-  const [matches, setMatches] = useState(false)
+  const [matches, setMatches] = useState(() => {
+    if (typeof window === 'undefined') return false
+    return window.matchMedia(query).matches
+  })
 
   useEffect(() => {
     const media = window.matchMedia(query)
-    if (media.matches !== matches) {
-      setMatches(media.matches)
-    }
-    const listener = () => setMatches(media.matches)
+    const listener = (e) => setMatches(e.matches)
     media.addEventListener('change', listener)
     return () => media.removeEventListener('change', listener)
-  }, [matches, query])
+  }, [query])
 
   return matches
 }
 
+/**
+ * Wraps child mesh/group: applies mouse-position tilt via R3F useFrame.
+ * useFrame is the correct way to animate inside React Three Fiber —
+ * it hooks into the renderer's RAF loop and is automatically cleaned up.
+ */
 function AbstractStructure({ mousePosition }) {
   const groupRef = useRef()
 
-  useEffect(() => {
+  useFrame(() => {
     if (!groupRef.current) return
-
-    const targetRotationX = mousePosition.y * 0.3
-    const targetRotationY = mousePosition.x * 0.3
-
-    const animate = () => {
-      if (groupRef.current) {
-        groupRef.current.rotation.x +=
-          (targetRotationX - groupRef.current.rotation.x) * 0.05
-        groupRef.current.rotation.y +=
-          (targetRotationY - groupRef.current.rotation.y) * 0.05
-      }
-      requestAnimationFrame(animate)
-    }
-
-    animate()
-  }, [mousePosition])
+    const targetX = mousePosition.y * 0.3
+    const targetY = mousePosition.x * 0.3
+    groupRef.current.rotation.x += (targetX - groupRef.current.rotation.x) * 0.05
+    groupRef.current.rotation.y += (targetY - groupRef.current.rotation.y) * 0.05
+  })
 
   return (
     <group ref={groupRef}>
@@ -51,15 +48,11 @@ function AbstractStructure({ mousePosition }) {
 function MainStructure() {
   const meshRef = useRef()
 
-  useEffect(() => {
-    const animate = () => {
-      if (meshRef.current) {
-        meshRef.current.rotation.y += 0.002
-      }
-      requestAnimationFrame(animate)
+  useFrame(() => {
+    if (meshRef.current) {
+      meshRef.current.rotation.y += 0.002
     }
-    animate()
-  }, [])
+  })
 
   return (
     <mesh ref={meshRef} position={[0, 0, 0]}>
@@ -78,16 +71,12 @@ function MainStructure() {
 function FloatingElements() {
   const groupRef = useRef()
 
-  useEffect(() => {
-    const animate = () => {
-      if (groupRef.current) {
-        groupRef.current.rotation.y -= 0.003
-        groupRef.current.rotation.x += 0.001
-      }
-      requestAnimationFrame(animate)
+  useFrame(() => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y -= 0.003
+      groupRef.current.rotation.x += 0.001
     }
-    animate()
-  }, [])
+  })
 
   return (
     <group ref={groupRef}>
@@ -162,14 +151,14 @@ function Scene({ mousePosition }) {
 
 export default function HeroScene({ mousePosition }) {
   return (
-    <div className="absolute inset-0 -z-10">
+    <div className="absolute inset-0 -z-10" aria-hidden="true">
       <Canvas
         gl={{
           antialias: true,
           alpha: true,
           powerPreference: 'high-performance',
         }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]}
       >
         <Suspense fallback={null}>
           <Scene mousePosition={mousePosition} />

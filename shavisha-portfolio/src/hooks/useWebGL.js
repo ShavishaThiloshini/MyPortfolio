@@ -1,17 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
+/**
+ * Checks WebGL availability synchronously on mount.
+ * Initializing in useState avoids an extra render cycle and the
+ * set-state-in-effect lint warning.
+ */
 export default function useWebGL() {
-  const [isWebGLAvailable, setIsWebGLAvailable] = useState(false)
-
-  useEffect(() => {
+  const [isWebGLAvailable] = useState(() => {
     try {
       const canvas = document.createElement('canvas')
       const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl')
-      setIsWebGLAvailable(!!gl)
-    } catch (e) {
-      setIsWebGLAvailable(false)
+      return !!gl
+    } catch {
+      return false
     }
-  }, [])
+  })
 
   return isWebGLAvailable
 }
