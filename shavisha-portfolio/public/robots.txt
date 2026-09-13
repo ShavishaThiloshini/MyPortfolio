@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Block the CV PDF from being indexed (serve through the portfolio instead)
+# Uncomment the line below if you prefer the PDF not to be crawled directly.
+# Disallow: /Shavisha_Thiloshini_CV.pdf

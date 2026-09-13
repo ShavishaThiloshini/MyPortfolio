@@ -66,12 +66,14 @@ function FeaturedProject({ project, index }) {
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-start">
         {/* Project Visual */}
         <div className="relative group">
-          <div className="aspect-video surface-card overflow-hidden bg-gradient-subtle">
-            <div className="w-full h-full flex items-center justify-center text-muted-text">
-              <div className="text-center">
-                <div className="text-6xl mb-4 opacity-20">📱</div>
-                <p className="text-sm">Project Preview</p>
-              </div>
+          <div className="aspect-video surface-card overflow-hidden bg-gradient-subtle flex items-center justify-center">
+            <div className="text-center select-none">
+              <p className="font-heading text-display font-bold opacity-[0.06] leading-none">
+                {(index + 1).toString().padStart(2, '0')}
+              </p>
+              <p className="text-meta text-muted-text mt-2 tracking-widest uppercase">
+                {project.category}
+              </p>
             </div>
           </div>
           <div className="absolute top-4 left-4">
@@ -181,8 +183,15 @@ function FeaturedProject({ project, index }) {
 function ProjectCard({ project }) {
   return (
     <div className="surface-card transition-base hover:translate-y-[-4px] hover:border-accent group">
-      <div className="aspect-video bg-gradient-subtle mb-4 overflow-hidden flex items-center justify-center text-muted-text">
-        <div className="text-4xl opacity-20">📱</div>
+      <div className="aspect-video bg-gradient-subtle mb-4 overflow-hidden flex items-center justify-center rounded-md">
+        <div className="text-center select-none">
+          <p className="font-heading font-bold opacity-[0.07] leading-none" style={{ fontSize: 'clamp(2rem, 8vw, 4rem)' }}>
+            {project.title.slice(0, 2).toUpperCase()}
+          </p>
+          <p className="text-meta text-muted-text mt-1 tracking-widest uppercase text-xs">
+            {project.category}
+          </p>
+        </div>
       </div>
       <div className="space-y-3">
         <div>

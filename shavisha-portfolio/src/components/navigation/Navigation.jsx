@@ -108,7 +108,12 @@ export default function Navigation() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a href="#resume" className="btn btn-primary px-4 py-2 text-meta hidden sm:inline-flex">
+          <a
+            href="/Shavisha_Thiloshini_CV.pdf"
+            download
+            className="btn btn-primary px-4 py-2 text-meta hidden sm:inline-flex"
+            aria-label="Download CV as PDF"
+          >
             Download CV
           </a>
 
@@ -147,9 +152,11 @@ export default function Navigation() {
             />
           ))}
           <a
-            href="#resume"
+            href="/Shavisha_Thiloshini_CV.pdf"
+            download
             onClick={closeMenu}
             className="text-title px-1 py-3 text-accent"
+            aria-label="Download CV as PDF"
           >
             Download CV
           </a>
