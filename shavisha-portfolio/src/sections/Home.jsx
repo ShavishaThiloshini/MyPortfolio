@@ -12,12 +12,12 @@ export default function Home() {
       {/* Background Orbs */}
       <div className="absolute top-[20%] left-[10%] w-[40vw] h-[40vw] rounded-full bg-accent/10 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[10%] right-[10%] w-[30vw] h-[30vw] rounded-full bg-accent-highlight/10 blur-[100px] pointer-events-none" />
-      
+
       {/* High-quality background image */}
       <div className="absolute inset-0 -z-10 w-full h-full opacity-20 mix-blend-screen pointer-events-none">
-        <img 
-          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
-          alt="Space background" 
+        <img
+          src="src/assets/images/hero.png"
+          alt="Space background"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
