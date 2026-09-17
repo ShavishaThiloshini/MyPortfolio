@@ -79,8 +79,8 @@ export default function Navigation() {
     <header
       className={`sticky top-0 z-50 transition-base ${
         isScrolled || isMenuOpen
-          ? 'border-b border-border bg-background/80 backdrop-blur-md'
-          : 'border-b border-transparent bg-transparent'
+          ? 'bg-background/80 backdrop-blur-md'
+          : 'bg-transparent'
       }`}
     >
       <div className="page-wrap flex items-center justify-between gap-4 py-4">

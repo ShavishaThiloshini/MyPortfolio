@@ -1,6 +1,7 @@
 import { ArrowRight, Download } from 'lucide-react'
 import SocialIcon from '../components/common/SocialIcon'
 import socialLinks from '../data/socialLinks'
+import heroImage from '../assets/images/Hero.png'
 
 export default function Home() {
   return (
@@ -14,13 +15,12 @@ export default function Home() {
       <div className="absolute bottom-[10%] right-[10%] w-[30vw] h-[30vw] rounded-full bg-accent-highlight/10 blur-[100px] pointer-events-none" />
 
       {/* High-quality background image */}
-      <div className="absolute inset-0 -z-10 w-full h-full opacity-20 mix-blend-screen pointer-events-none">
+      <div className="absolute inset-0 -z-10 w-full h-full pointer-events-none">
         <img
-          src="src/assets/images/hero.png"
+          src={heroImage}
           alt="Space background"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
       </div>
 
       <div className="page-wrap relative z-10 flex items-center">
@@ -41,7 +41,7 @@ export default function Home() {
             I build accessible, pixel-perfect, and performant web experiences
             with a focus on clean design and thoughtful user interactions.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row gap-8 mb-8">
             <a
               href="#projects"
               className="btn btn-primary"
