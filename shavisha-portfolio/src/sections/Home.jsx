@@ -77,11 +77,6 @@ export default function Home() {
         </div>
       </div>
 
-      <div
-        className="absolute inset-0 -z-20"
-        aria-hidden="true"
-        style={{ background: 'var(--gradient-hero)' }}
-      />
     </section>
   )
 }
