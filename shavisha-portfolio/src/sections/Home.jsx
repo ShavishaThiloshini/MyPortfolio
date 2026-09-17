@@ -25,6 +25,9 @@ export default function Home() {
       aria-labelledby="home-heading"
       className="relative flex min-h-dvh scroll-mt-0 items-center overflow-hidden"
     >
+      {/* Background Orbs */}
+      <div className="absolute top-[20%] left-[10%] w-[40vw] h-[40vw] rounded-full bg-accent/10 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[10%] right-[10%] w-[30vw] h-[30vw] rounded-full bg-accent-highlight/10 blur-[100px] pointer-events-none" />
       {shouldShow3D && <HeroScene mousePosition={mousePosition} />}
 
       <div className="page-wrap relative z-10 flex items-center">
@@ -32,7 +35,7 @@ export default function Home() {
           <p className="text-label mb-4">Welcome</p>
           <h1
             id="home-heading"
-            className="font-heading text-display mb-6 leading-tight"
+            className="font-heading text-display mb-6 leading-tight drop-shadow-lg"
           >
             Shavisha Thiloshini
           </h1>
@@ -71,7 +74,7 @@ export default function Home() {
                 href={link.url}
                 target={link.name !== 'Email' ? '_blank' : undefined}
                 rel={link.name !== 'Email' ? 'noopener noreferrer' : undefined}
-                className="btn-secondary flex size-10 items-center justify-center rounded-md border border-border transition-base hover:border-accent hover:text-accent"
+                className="btn-secondary flex size-10 items-center justify-center rounded-md border border-border transition-base hover:border-accent hover:text-accent hover:shadow-glow"
                 aria-label={`Visit ${link.name}`}
               >
                 <SocialIcon name={link.name} size={20} />

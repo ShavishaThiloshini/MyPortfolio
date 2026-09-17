@@ -54,7 +54,7 @@ export default function Projects() {
       >
         <div className="mb-16">
           <p className="text-label mb-4">Projects</p>
-          <h2 id="projects-heading" className="font-heading text-heading">
+          <h2 id="projects-heading" className="font-heading text-heading drop-shadow-lg">
             Featured Projects
           </h2>
         </div>
@@ -93,7 +93,7 @@ function ProjectCard({ project, index, onClick, prefersReducedMotion }) {
       whileHover={!prefersReducedMotion ? { scale: 1.02, rotateX: 2, rotateY: -2, y: -4 } : { y: -4 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       onClick={onClick}
-      className={`surface-card cursor-pointer flex flex-col h-full border-border hover:border-accent hover:shadow-glow transition-slow ${
+      className={`surface-card glow-border cursor-pointer flex flex-col h-full border-border hover:border-accent hover:shadow-glow transition-slow ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
       style={{ 
@@ -129,14 +129,14 @@ function ProjectCard({ project, index, onClick, prefersReducedMotion }) {
         style={{ transform: !prefersReducedMotion ? 'translateZ(30px)' : 'none' }}
       >
         <div className="mb-3">
-          <span className="text-meta text-accent font-medium">
+          <span className="text-label font-bold text-accent tracking-wider bg-accent/10 px-3 py-1 rounded-full">
             {project.category}
           </span>
-          <h3 className="font-heading text-title text-primary-text mt-1">
+          <h3 className="font-heading text-title text-primary-text mt-4">
             {project.title}
           </h3>
         </div>
-        <p className="text-body text-secondary-text line-clamp-2 mb-6 flex-grow">
+        <p className="text-body text-secondary-text line-clamp-2 mb-6 flex-grow mt-2">
           {project.shortDescription}
         </p>
         
@@ -189,14 +189,14 @@ function ProjectModal({ project, onClose }) {
           <X size={20} />
         </button>
 
-        <div className="grid gap-8 lg:grid-cols-2 p-2 sm:p-4 mt-8 sm:mt-0">
+        <div className="grid gap-8 lg:grid-cols-2 p-2 sm:p-4 mt-8 sm:mt-0 relative z-10">
           <div className="flex flex-col h-full">
-            <div className="aspect-video bg-gradient-subtle overflow-hidden flex items-center justify-center rounded-lg border border-border mb-6">
-              <div className="text-center select-none">
-                <p className="font-heading font-bold opacity-[0.05] leading-none" style={{ fontSize: 'clamp(4rem, 12vw, 8rem)' }}>
+            <div className="aspect-video bg-gradient-to-br from-surface to-elevated overflow-hidden flex items-center justify-center rounded-lg border border-border shadow-glow-inner mb-6">
+              <div className="text-center select-none relative z-10">
+                <p className="font-heading font-bold opacity-[0.15] leading-none text-accent" style={{ fontSize: 'clamp(4rem, 12vw, 8rem)' }}>
                   {project.title.slice(0, 2).toUpperCase()}
                 </p>
-                <p className="text-meta text-muted-text mt-2 tracking-widest uppercase">
+                <p className="text-meta text-accent mt-2 tracking-widest uppercase font-bold">
                   {project.category}
                 </p>
               </div>

@@ -18,13 +18,14 @@ export default function Experience() {
       >
         <div className="mb-12">
           <p className="text-label mb-4">Experience</p>
-          <h2 id="experience-heading" className="font-heading text-heading">
+          <h2 id="experience-heading" className="font-heading text-heading drop-shadow-lg">
             Professional Experience
           </h2>
         </div>
 
         <div className="max-w-3xl">
-          <div className="relative space-y-8 before:absolute before:left-[5px] before:top-2 before:bottom-2 before:w-px before:bg-border">
+          <div className="relative space-y-8 pl-4">
+            <div className="timeline-line" />
             {experience.map((item, index) => (
               <ExperienceItem key={item.id} item={item} index={index} />
             ))}
@@ -46,10 +47,11 @@ function ExperienceItem({ item, index }) {
       }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      <div className="absolute left-0 top-2 size-3 rounded-full bg-accent shadow-glow" />
-      <div className="mb-2">
-        <time className="text-meta text-accent font-medium">{item.year}</time>
-      </div>
+      <div className="absolute left-[3.5px] top-2 size-3.5 rounded-full bg-accent shadow-glow border-2 border-background" />
+      <div className="glass-panel glow-border p-6 relative z-10 transition-base hover:-translate-y-1">
+        <div className="mb-2">
+          <time className="text-meta text-accent font-bold tracking-wide">{item.year}</time>
+        </div>
       <h3 className="font-heading text-title mb-1 text-primary-text">
         {item.title}
       </h3>
@@ -65,11 +67,12 @@ function ExperienceItem({ item, index }) {
             key={idx}
             className="text-body text-secondary-text flex items-start gap-2"
           >
-            <span className="text-accent mt-1.5">•</span>
+            <span className="text-accent mt-1.5 opacity-60">•</span>
             <span>{highlight}</span>
           </li>
         ))}
       </ul>
+      </div>
     </div>
   )
 }

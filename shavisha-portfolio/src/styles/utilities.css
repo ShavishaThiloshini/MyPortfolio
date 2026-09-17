@@ -32,10 +32,47 @@
 }
 
 @utility surface-card {
-  background-color: var(--color-surface);
+  background: var(--gradient-card);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--card-padding);
+  box-shadow: 0 4px 20px rgb(0 0 0 / 0.2);
+}
+
+@utility glass-panel {
+  background: rgb(21 25 35 / 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+@utility glow-border {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(to bottom right, var(--color-border-strong), transparent, var(--color-border-strong));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--default-transition-duration) var(--ease-standard);
+  }
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+@utility bg-noise {
+  background-image: var(--bg-noise);
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 50;
+  mix-blend-mode: overlay;
 }
 
 @utility btn {
@@ -94,4 +131,14 @@
     var(--color-secondary) 50%,
     var(--color-background) 100%
   );
+}
+
+@utility timeline-line {
+  position: absolute;
+  left: 5px;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--color-accent), transparent);
+  opacity: 0.3;
 }

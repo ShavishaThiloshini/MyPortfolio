@@ -1,5 +1,23 @@
+import { Layout, Palette, Database, Code2, Wrench } from 'lucide-react'
 import skills from '../data/skills'
 import useScrollReveal from '../hooks/useScrollReveal'
+
+const getIcon = (id) => {
+  switch (id) {
+    case 'frontend':
+      return <Layout className="text-accent" size={24} />
+    case 'ui-ux':
+      return <Palette className="text-accent" size={24} />
+    case 'backend':
+      return <Database className="text-accent" size={24} />
+    case 'programming':
+      return <Code2 className="text-accent" size={24} />
+    case 'tools':
+      return <Wrench className="text-accent" size={24} />
+    default:
+      return <Code2 className="text-accent" size={24} />
+  }
+}
 
 export default function Skills() {
   const [ref, isVisible] = useScrollReveal()
@@ -8,7 +26,7 @@ export default function Skills() {
     <section
       id="skills"
       aria-labelledby="skills-heading"
-      className="page-wrap section-space scroll-mt-24"
+      className="page-wrap section-space scroll-mt-24 relative"
     >
       <div
         ref={ref}
@@ -18,7 +36,7 @@ export default function Skills() {
       >
         <div className="mb-12">
           <p className="text-label mb-4">Skills</p>
-          <h2 id="skills-heading" className="font-heading text-heading">
+          <h2 id="skills-heading" className="font-heading text-heading drop-shadow-lg">
             Technical Skills
           </h2>
         </div>
@@ -27,21 +45,24 @@ export default function Skills() {
           {skills.map((category) => (
             <article
               key={category.id}
-              className="surface-card transition-base hover:translate-y-[-4px] hover:border-accent"
+              className="surface-card glow-border transition-base hover:-translate-y-1 relative z-10"
             >
-              <h3 className="font-heading text-title mb-4 text-primary-text">
-                {category.title}
-              </h3>
-              <ul className="space-y-3">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 rounded-lg bg-accent/10">
+                  {getIcon(category.id)}
+                </div>
+                <h3 className="font-heading text-title text-primary-text">
+                  {category.title}
+                </h3>
+              </div>
+              
+              <ul className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
                   <li
                     key={skill.name}
-                    className="flex items-center justify-between text-body text-secondary-text"
+                    className="flex items-center bg-surface/50 border border-border rounded-full px-3 py-1.5 text-sm text-secondary-text transition-colors hover:border-accent/50 hover:text-primary-text cursor-default"
                   >
-                    <span>{skill.name}</span>
-                    <span className="text-meta text-muted-text">
-                      {skill.level}
-                    </span>
+                    {skill.name}
                   </li>
                 ))}
               </ul>

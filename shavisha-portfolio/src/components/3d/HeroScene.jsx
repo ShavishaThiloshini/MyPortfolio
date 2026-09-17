@@ -59,10 +59,12 @@ function MainStructure() {
       <boxGeometry args={[2, 2, 2]} />
       <meshStandardMaterial
         color="#151923"
-        metalness={0.3}
-        roughness={0.4}
+        metalness={0.6}
+        roughness={0.2}
         transparent
-        opacity={0.9}
+        opacity={0.8}
+        emissive="#4FD1C5"
+        emissiveIntensity={0.05}
       />
     </mesh>
   )
@@ -94,10 +96,10 @@ function FloatingElements() {
         <tetrahedronGeometry args={[0.3]} />
         <meshStandardMaterial
           color="#7DE7DE"
-          metalness={0.4}
-          roughness={0.4}
+          metalness={0.8}
+          roughness={0.1}
           emissive="#7DE7DE"
-          emissiveIntensity={0.15}
+          emissiveIntensity={0.5}
         />
       </mesh>
       <mesh position={[0.8, -1.2, -0.4]}>
@@ -117,10 +119,10 @@ function FloatingElements() {
 function Lighting() {
   return (
     <>
-      <ambientLight intensity={0.4} />
-      <directionalLight position={[5, 5, 5]} intensity={0.8} color="#4FD1C5" />
-      <directionalLight position={[-5, -5, -5]} intensity={0.4} color="#7DE7DE" />
-      <pointLight position={[0, 3, 2]} intensity={0.5} color="#4FD1C5" />
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[5, 5, 5]} intensity={1.2} color="#4FD1C5" />
+      <directionalLight position={[-5, -5, -5]} intensity={0.6} color="#7DE7DE" />
+      <pointLight position={[0, 3, 2]} intensity={1.5} color="#4FD1C5" />
     </>
   )
 }
