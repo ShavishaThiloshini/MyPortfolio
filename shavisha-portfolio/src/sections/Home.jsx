@@ -37,11 +37,11 @@ export default function Home() {
             <p className="text-title">Frontend Developer & UI/UX Designer</p>
             <p className="text-title">Aspiring Educator</p>
           </div>
-          <p className="mb-12 max-w-xl text-body text-secondary-text">
+          <p className="mb-8 max-w-xl text-body text-secondary-text">
             I build accessible, pixel-perfect, and performant web experiences
             with a focus on clean design and thoughtful user interactions.
           </p>
-          <div className="flex flex-col sm:flex-row gap-8 mb-8">
+          <div className="flex flex-col sm:flex-row gap-8 mb-12 mt-2">
             <a
               href="#projects"
               className="btn btn-primary"

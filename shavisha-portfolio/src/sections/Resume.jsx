@@ -22,11 +22,11 @@ export default function Resume() {
             <h2 id="resume-heading" className="font-heading text-heading mb-6 drop-shadow-lg">
               Ready to Know More?
             </h2>
-            <p className="text-body text-secondary-text mb-10 max-w-xl">
+            <p className="text-body text-secondary-text mb-8 max-w-xl">
               Download my complete CV to learn more about my education, experience,
               skills, and projects.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto mt-2">
               <a
                 href="/Shavisha_Thiloshini_CV.pdf"
                 download

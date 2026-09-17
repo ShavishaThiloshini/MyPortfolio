@@ -22,12 +22,12 @@ export default function Contact() {
             <h2 id="contact-heading" className="font-heading text-heading mb-6 drop-shadow-lg">
               Let's Build Something
             </h2>
-            <p className="text-body text-secondary-text mb-10 max-w-xl">
+            <p className="text-body text-secondary-text mb-8 max-w-xl">
               Have an idea, opportunity, or just want to connect? I'd love to hear
               from you.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-6 w-full">
+            <div className="flex flex-wrap justify-center gap-6 w-full mt-2">
               {socialLinks.map((link) => (
                 <a
                   key={link.name}
