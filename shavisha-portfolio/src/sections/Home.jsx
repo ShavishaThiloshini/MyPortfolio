@@ -1,24 +1,8 @@
 import { ArrowRight, Download } from 'lucide-react'
 import SocialIcon from '../components/common/SocialIcon'
-import { useState } from 'react'
-import HeroScene from '../components/3d/HeroScene'
 import socialLinks from '../data/socialLinks'
-import useMousePosition from '../hooks/useMousePosition'
-import useWebGL from '../hooks/useWebGL'
 
 export default function Home() {
-  const mousePosition = useMousePosition()
-  const isWebGLAvailable = useWebGL()
-
-  // Initialize synchronously to avoid a flash/layout shift.
-  const [prefersReducedMotion] = useState(
-    () =>
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-  )
-
-  const shouldShow3D = isWebGLAvailable && !prefersReducedMotion
-
   return (
     <section
       id="home"
@@ -28,7 +12,16 @@ export default function Home() {
       {/* Background Orbs */}
       <div className="absolute top-[20%] left-[10%] w-[40vw] h-[40vw] rounded-full bg-accent/10 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[10%] right-[10%] w-[30vw] h-[30vw] rounded-full bg-accent-highlight/10 blur-[100px] pointer-events-none" />
-      {shouldShow3D && <HeroScene mousePosition={mousePosition} />}
+      
+      {/* High-quality background image */}
+      <div className="absolute inset-0 -z-10 w-full h-full opacity-20 mix-blend-screen pointer-events-none">
+        <img 
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" 
+          alt="Space background" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
+      </div>
 
       <div className="page-wrap relative z-10 flex items-center">
         <div className="max-w-3xl">

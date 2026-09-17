@@ -111,16 +111,16 @@ function ProjectCard({ project, index, onClick, prefersReducedMotion }) {
       aria-label={`View details for ${project.title}`}
     >
       <div 
-        className="aspect-video bg-gradient-subtle mb-6 overflow-hidden flex items-center justify-center rounded-md border border-border/50"
+        className="aspect-video mb-6 overflow-hidden flex items-center justify-center rounded-md border border-border/50 relative"
         style={{ transform: !prefersReducedMotion ? 'translateZ(20px)' : 'none' }}
       >
-        <div className="text-center select-none">
-          <p className="font-heading font-bold opacity-[0.07] leading-none" style={{ fontSize: 'clamp(2rem, 8vw, 4rem)' }}>
-            {project.title.slice(0, 2).toUpperCase()}
-          </p>
-          <p className="text-meta text-muted-text mt-2 tracking-widest uppercase text-xs">
-            {project.category}
-          </p>
+        <img 
+          src={project.image} 
+          alt={project.title} 
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100 flex items-end p-4">
+          <p className="text-meta text-accent font-medium">{project.category}</p>
         </div>
       </div>
       
@@ -191,15 +191,12 @@ function ProjectModal({ project, onClose }) {
 
         <div className="grid gap-8 lg:grid-cols-2 p-2 sm:p-4 mt-8 sm:mt-0 relative z-10">
           <div className="flex flex-col h-full">
-            <div className="aspect-video bg-gradient-to-br from-surface to-elevated overflow-hidden flex items-center justify-center rounded-lg border border-border shadow-glow-inner mb-6">
-              <div className="text-center select-none relative z-10">
-                <p className="font-heading font-bold opacity-[0.15] leading-none text-accent" style={{ fontSize: 'clamp(4rem, 12vw, 8rem)' }}>
-                  {project.title.slice(0, 2).toUpperCase()}
-                </p>
-                <p className="text-meta text-accent mt-2 tracking-widest uppercase font-bold">
-                  {project.category}
-                </p>
-              </div>
+            <div className="aspect-video overflow-hidden flex items-center justify-center rounded-lg border border-border shadow-glow-inner mb-6 relative">
+              <img 
+                src={project.image} 
+                alt={project.title} 
+                className="w-full h-full object-cover" 
+              />
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 mt-auto pt-4">

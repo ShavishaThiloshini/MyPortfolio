@@ -1,3 +1,9 @@
+import gtMinistriesImg from '../assets/images/GT Visuals.png'
+import smartClinicImg from '../assets/images/SmartClinic.png'
+import zoneEdanImg from '../assets/images/ZoneEdan.png'
+import chikolataImg from '../assets/images/Cikolata.png'
+import lumoraVexImg from '../assets/images/LumoraVex.png'
+
 const projects = [
   {
     id: 'gt-ministries',
@@ -16,7 +22,7 @@ const projects = [
       'Contact and booking sections'
     ],
     contribution: 'Handled the entire design and frontend development process from conceptualization to deployment.',
-    image: '/images/projects/gt-ministries.jpg',
+    image: gtMinistriesImg,
     links: {
       github: 'https://github.com/ShavishaThiloshini/GT-Visual-Ministries',
       live: 'https://gtvisualministries.netlify.app/'
@@ -40,7 +46,7 @@ const projects = [
       'Admin dashboard for clinic operations'
     ],
     contribution: 'Contributed to frontend development, patient management interface, and appointment scheduling features.',
-    image: '/images/projects/smart-clinic.jpg',
+    image: smartClinicImg,
     links: {
       github: 'https://github.com/ShavishaThiloshini/Smart_Clinic',
       live: null
@@ -64,7 +70,7 @@ const projects = [
       'Responsive mobile-first design'
     ],
     contribution: 'Developed the destination browsing interface, implemented search functionality, and contributed to the trip planning features.',
-    image: '/images/projects/zoneedan.jpg',
+    image: zoneEdanImg,
     links: {
       github: 'https://github.com/ShavishaThiloshini/ZoneEdan',
       live: 'https://zoneedan.netlify.app/'
@@ -88,7 +94,7 @@ const projects = [
       'Location and reservation details'
     ],
     contribution: 'Led the UI design and frontend implementation, focusing on visual hierarchy and performance.',
-    image: '/images/projects/chikolata.jpg',
+    image: chikolataImg,
     links: {
       github: 'https://github.com/ShavishaThiloshini/cikolata-restaurant-website',
       live: 'https://cikolata-portfolio.netlify.app/'
@@ -112,7 +118,7 @@ const projects = [
       'Contact and booking forms'
     ],
     contribution: 'Responsible for the end-to-end frontend development, ensuring high performance for media-heavy pages.',
-    image: '/images/projects/lumora-vex.jpg',
+    image: lumoraVexImg,
     links: {
       github: 'https://github.com/ShavishaThiloshini/lumora-vex-photography-portfolio',
       live: 'https://lumora-vex.netlify.app/'
