@@ -2,8 +2,16 @@ import { ArrowRight, Download } from 'lucide-react'
 import SocialIcon from '../components/common/SocialIcon'
 import socialLinks from '../data/socialLinks'
 import heroImage from '../assets/images/Hero.png'
+import useTypingEffect from '../hooks/useTypingEffect'
+
+const ROLES = [
+  'Software Engineering Student',
+  'Frontend Developer & UI/UX Designer',
+  'Aspiring Educator',
+]
 
 export default function Home() {
+  const { displayText, isTyping } = useTypingEffect(ROLES)
   return (
     <section
       id="home"
@@ -32,10 +40,16 @@ export default function Home() {
           >
             Shavisha Thiloshini
           </h1>
-          <div className="mb-6 space-y-2 text-secondary-text">
-            <p className="text-title">Software Engineering Student</p>
-            <p className="text-title">Frontend Developer & UI/UX Designer</p>
-            <p className="text-title">Aspiring Educator</p>
+          {/* Animated typing roles — fixed height prevents layout shift */}
+          <div className="mb-6 h-8 flex items-center">
+            <p className="text-title text-secondary-text">
+              {displayText}
+              <span
+                className="typing-cursor"
+                aria-hidden="true"
+                style={{ opacity: isTyping ? undefined : 0 }}
+              />
+            </p>
           </div>
           <p className="mb-8 max-w-xl text-body text-secondary-text">
             I build accessible, pixel-perfect, and performant web experiences
