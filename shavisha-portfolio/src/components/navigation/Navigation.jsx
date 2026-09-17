@@ -76,7 +76,14 @@ export default function Navigation() {
   const closeMenu = () => setIsMenuOpen(false)
 
   return (
-    <header className="fixed top-0 w-full z-50 transition-base bg-transparent">
+    <header
+      className="fixed top-0 w-full z-50"
+      style={{
+        backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.5)' : 'transparent',
+        backdropFilter: isScrolled ? 'blur(4px)' : 'none',
+        transition: 'background-color 300ms ease, backdrop-filter 300ms ease',
+      }}
+    >
       <div className="page-wrap flex items-center justify-between gap-4 py-4">
         <a
           href="#home"
