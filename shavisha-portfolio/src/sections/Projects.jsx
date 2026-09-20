@@ -90,7 +90,7 @@ function ProjectCard({ project, index, onClick, prefersReducedMotion }) {
   return (
     <motion.div
       ref={itemRef}
-      whileHover={!prefersReducedMotion ? { scale: 1.02, rotateX: 2, rotateY: -2, y: -4 } : { y: -4 }}
+      whileHover={!prefersReducedMotion ? { scale: 1.02, y: -4 } : { y: -4 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       onClick={onClick}
       className={`surface-card glow-border cursor-pointer flex flex-col h-full border-border hover:border-accent hover:shadow-glow transition-slow ${
