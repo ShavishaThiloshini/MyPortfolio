@@ -1,7 +1,7 @@
 import { ArrowRight, Download } from 'lucide-react'
 import SocialIcon from '../components/common/SocialIcon'
 import socialLinks from '../data/socialLinks'
-import heroImage from '../assets/images/Hero.png'
+import heroImage from '../assets/images/Hero1.png'
 import useTypingEffect from '../hooks/useTypingEffect'
 
 const ROLES = [
