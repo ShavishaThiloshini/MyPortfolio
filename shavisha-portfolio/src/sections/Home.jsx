@@ -27,7 +27,7 @@ export default function Home() {
         <img
           src={heroImage}
           alt="Space background"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover blur-sm md:blur-none transition-all duration-300"
         />
       </div>
 
