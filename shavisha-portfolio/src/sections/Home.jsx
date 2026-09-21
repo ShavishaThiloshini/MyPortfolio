@@ -30,7 +30,7 @@ export default function Home() {
           <img
             src={heroImage}
             alt="Space background"
-            className="w-full h-full object-cover transition-all duration-300"
+            className="w-full h-full object-cover object-center transition-all duration-300 blur-[3px] scale-105 md:blur-none md:scale-100"
           />
         </picture>
       </div>
