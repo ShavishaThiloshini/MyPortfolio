@@ -124,23 +124,31 @@ export default function Navigation() {
             className="inline-flex size-10 items-center justify-center rounded-md text-primary-text lg:hidden"
             aria-expanded={isMenuOpen}
             aria-controls={menuId}
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-label="Open menu"
+            onClick={() => setIsMenuOpen(true)}
           >
-            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            <Menu size={22} />
           </button>
         </div>
       </div>
 
+      {/* Mobile Navigation Overlay */}
       <div
         id={menuId}
-        className={`page-wrap overflow-hidden transition-base lg:hidden ${
-          isMenuOpen
-            ? 'max-h-[100dvh] pb-6 opacity-100'
-            : 'pointer-events-none max-h-0 opacity-0'
+        className={`fixed inset-0 z-[60] flex flex-col items-center justify-center bg-black/50 backdrop-blur-sm transition-all duration-300 lg:hidden ${
+          isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
       >
-        <nav className="flex flex-col gap-2 pt-2" aria-label="Mobile">
+        <button
+          type="button"
+          className="absolute top-5 right-4 sm:right-8 inline-flex size-10 items-center justify-center rounded-md text-primary-text"
+          aria-label="Close menu"
+          onClick={closeMenu}
+        >
+          <X size={28} />
+        </button>
+
+        <nav className="flex flex-col items-center gap-6" aria-label="Mobile">
           {navLinks.map((link, index) => (
             <NavLink
               key={link.id}
@@ -148,7 +156,7 @@ export default function Navigation() {
               label={link.label}
               isActive={activeId === link.id}
               onClick={closeMenu}
-              className="px-2 py-3 text-title"
+              className="text-2xl font-heading tracking-wide"
               linkRef={index === 0 ? firstLinkRef : undefined}
             />
           ))}
@@ -156,7 +164,7 @@ export default function Navigation() {
             href="/Shavisha_Thiloshini_CV.pdf"
             download
             onClick={closeMenu}
-            className="text-title px-2 py-3 text-accent mt-2 inline-block"
+            className="text-2xl font-heading tracking-wide text-accent mt-4"
             aria-label="Download CV as PDF"
           >
             Download CV

@@ -2,6 +2,7 @@ import { ArrowRight, Download } from 'lucide-react'
 import SocialIcon from '../components/common/SocialIcon'
 import socialLinks from '../data/socialLinks'
 import heroImage from '../assets/images/Hero1.png'
+import heroMobileImage from '../assets/images/hero_mobile_laptop.jpg'
 import useTypingEffect from '../hooks/useTypingEffect'
 
 const ROLES = [
@@ -24,11 +25,14 @@ export default function Home() {
 
       {/* High-quality background image */}
       <div className="absolute inset-0 -z-10 w-full h-full pointer-events-none">
-        <img
-          src={heroImage}
-          alt="Space background"
-          className="w-full h-full object-cover blur-sm md:blur-none transition-all duration-300"
-        />
+        <picture>
+          <source media="(max-width: 767px)" srcSet={heroMobileImage} />
+          <img
+            src={heroImage}
+            alt="Space background"
+            className="w-full h-full object-cover transition-all duration-300"
+          />
+        </picture>
       </div>
 
       <div className="page-wrap relative z-10 flex items-center">
