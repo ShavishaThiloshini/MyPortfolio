@@ -55,10 +55,10 @@ export default function Home() {
             I build accessible, pixel-perfect, and performant web experiences
             with a focus on clean design and thoughtful user interactions.
           </p>
-          <div className="flex flex-col sm:flex-row gap-8 mb-12 mt-2">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 mb-12 mt-2">
             <a
               href="#projects"
-              className="btn btn-primary"
+              className="btn btn-primary w-full sm:w-auto"
               aria-label="View my projects"
             >
               <span>Explore My Work</span>
@@ -67,14 +67,14 @@ export default function Home() {
             <a
               href="/Shavisha_Thiloshini_CV.pdf"
               download
-              className="btn btn-secondary"
+              className="btn btn-secondary w-full sm:w-auto"
               aria-label="Download CV as PDF"
             >
               <Download size={18} />
               <span>Download CV</span>
             </a>
           </div>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
             {socialLinks.map((link) => (
               <a
                 key={link.name}

@@ -17,15 +17,15 @@
   --font-heading: "Bricolage Grotesque", ui-sans-serif, sans-serif;
   --font-sans: "Instrument Sans", ui-sans-serif, sans-serif;
 
-  --text-display: clamp(2.5rem, 7vw, 5.5rem);
+  --text-display: clamp(2rem, 8vw, 5.5rem);
   --text-display--line-height: 1.05;
   --text-display--letter-spacing: -0.04em;
 
-  --text-heading: clamp(1.75rem, 3.2vw, 2.5rem);
+  --text-heading: clamp(1.5rem, 5vw, 2.5rem);
   --text-heading--line-height: 1.15;
   --text-heading--letter-spacing: -0.03em;
 
-  --text-title: clamp(1.25rem, 2vw, 1.5rem);
+  --text-title: clamp(1.125rem, 3vw, 1.5rem);
   --text-title--line-height: 1.3;
   --text-title--letter-spacing: -0.02em;
 
@@ -61,9 +61,9 @@
 }
 
 :root {
-  --page-inline: 1.25rem;
-  --section-block: 4.5rem;
-  --card-padding: 1.25rem;
+  --page-inline: 1rem;
+  --section-block: 4rem;
+  --card-padding: 1rem;
 }
 
 @media (min-width: 768px) {

@@ -117,7 +117,7 @@ function ProjectCard({ project, index, onClick, prefersReducedMotion }) {
         <img 
           src={project.image} 
           alt={project.title} 
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
+          className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" 
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100 flex items-end p-4">
           <p className="text-meta text-accent font-medium">{project.category}</p>
@@ -183,7 +183,7 @@ function ProjectModal({ project, onClose }) {
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full bg-surface border border-border text-secondary-text hover:text-accent hover:border-accent transition-base z-20"
+          className="absolute top-2 right-2 sm:top-4 sm:right-4 p-2 rounded-full bg-surface/80 backdrop-blur border border-border text-secondary-text hover:text-accent hover:border-accent transition-base z-20"
           aria-label="Close modal"
         >
           <X size={20} />
@@ -191,11 +191,11 @@ function ProjectModal({ project, onClose }) {
 
         <div className="grid gap-8 lg:grid-cols-2 p-2 sm:p-4 mt-8 sm:mt-0 relative z-10">
           <div className="flex flex-col h-full">
-            <div className="aspect-video overflow-hidden flex items-center justify-center rounded-lg border border-border shadow-glow-inner mb-6 relative">
+            <div className="aspect-video overflow-hidden flex items-center justify-center rounded-lg border border-border shadow-glow-inner mb-6 relative bg-surface/50">
               <img 
                 src={project.image} 
                 alt={project.title} 
-                className="w-full h-full object-cover" 
+                className="w-full h-full object-contain" 
               />
             </div>
             

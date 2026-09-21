@@ -17,7 +17,7 @@ export default function Resume() {
         }`}
       >
         <div className="max-w-4xl mx-auto">
-          <div className="surface-card glow-border relative z-10 p-8 sm:p-12 text-center flex flex-col items-center">
+          <div className="surface-card glow-border relative z-10 p-8 sm:p-12 text-left flex flex-col items-start">
             <p className="text-label mb-4">Resume</p>
             <h2 id="resume-heading" className="font-heading text-heading mb-6 drop-shadow-lg">
               Ready to Know More?
@@ -26,11 +26,11 @@ export default function Resume() {
               Download my complete CV to learn more about my education, experience,
               skills, and projects.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto mt-2">
+            <div className="flex flex-col sm:flex-row justify-start gap-6 w-full sm:w-auto mt-2">
               <a
                 href="/Shavisha_Thiloshini_CV.pdf"
                 download
-                className="btn btn-primary inline-flex items-center justify-center gap-2"
+                className="btn btn-primary w-full sm:w-auto inline-flex items-center justify-center gap-2"
               >
                 <Download size={18} />
                 Download My CV

@@ -136,11 +136,11 @@ export default function Navigation() {
         id={menuId}
         className={`page-wrap overflow-hidden transition-base lg:hidden ${
           isMenuOpen
-            ? 'max-h-screen pb-6 opacity-100'
+            ? 'max-h-[100dvh] pb-6 opacity-100'
             : 'pointer-events-none max-h-0 opacity-0'
         }`}
       >
-        <nav className="flex flex-col gap-1" aria-label="Mobile">
+        <nav className="flex flex-col gap-2 pt-2" aria-label="Mobile">
           {navLinks.map((link, index) => (
             <NavLink
               key={link.id}
@@ -148,7 +148,7 @@ export default function Navigation() {
               label={link.label}
               isActive={activeId === link.id}
               onClick={closeMenu}
-              className="px-1 py-3 text-title"
+              className="px-2 py-3 text-title"
               linkRef={index === 0 ? firstLinkRef : undefined}
             />
           ))}
@@ -156,7 +156,7 @@ export default function Navigation() {
             href="/Shavisha_Thiloshini_CV.pdf"
             download
             onClick={closeMenu}
-            className="text-title px-1 py-3 text-accent"
+            className="text-title px-2 py-3 text-accent mt-2 inline-block"
             aria-label="Download CV as PDF"
           >
             Download CV

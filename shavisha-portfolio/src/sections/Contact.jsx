@@ -17,7 +17,7 @@ export default function Contact() {
         }`}
       >
         <div className="max-w-4xl mx-auto">
-          <div className="surface-card glow-border relative z-10 p-8 sm:p-12 text-center flex flex-col items-center">
+          <div className="surface-card glow-border relative z-10 p-8 sm:p-12 text-left flex flex-col items-start">
             <p className="text-label mb-4">Contact</p>
             <h2 id="contact-heading" className="font-heading text-heading mb-6 drop-shadow-lg">
               Let's Build Something
@@ -27,7 +27,7 @@ export default function Contact() {
               from you.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-6 w-full mt-2">
+            <div className="flex flex-wrap justify-start gap-6 w-full mt-2">
               {socialLinks.map((link) => (
                 <a
                   key={link.name}
