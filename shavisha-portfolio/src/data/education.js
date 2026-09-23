@@ -22,6 +22,7 @@ const education = [
     startYear: 2024,
     endYear: 2025,
     status: 'Completed',
+    certificate: '/Diploma in IT.pdf',
   },
   {
     id: 'diploma-english',
@@ -30,6 +31,7 @@ const education = [
     startYear: 2024,
     endYear: 2025,
     status: 'Completed',
+    certificate: '/Diploma In English.pdf',
   },
   {
     id: 'cambridge-english',
@@ -38,6 +40,7 @@ const education = [
     startYear: 2025,
     endYear: 2025,
     status: 'Completed',
+    certificate: '/PET Exam.pdf',
   },
 ]
 
