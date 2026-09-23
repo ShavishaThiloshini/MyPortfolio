@@ -39,14 +39,6 @@ const education = [
     endYear: 2025,
     status: 'Completed',
   },
-  {
-    id: 'gce-ol',
-    institution: "St. Mary's College, Trincomalee",
-    qualification: 'G.C.E. Ordinary Level',
-    startYear: 2024,
-    endYear: 2024,
-    status: 'Completed',
-  },
 ]
 
 export default education
