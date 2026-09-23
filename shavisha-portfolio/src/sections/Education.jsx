@@ -1,5 +1,6 @@
 import education from '../data/education'
 import useScrollReveal from '../hooks/useScrollReveal'
+import { ExternalLink } from 'lucide-react'
 
 export default function Education() {
   const [ref, isVisible] = useScrollReveal()
@@ -67,16 +68,19 @@ function EducationItem({ item, index }) {
         <h3 className="font-heading text-title mb-1 text-primary-text">
           {item.qualification}
         </h3>
-        <p className="text-meta text-secondary-text mb-4">{item.institution}</p>
+        <p className="text-meta text-secondary-text">{item.institution}</p>
         {item.certificate && (
-          <a
-            href={item.certificate}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-secondary inline-flex items-center justify-center gap-2 text-sm py-2 px-4"
-          >
-            View Certificate
-          </a>
+          <div className="mt-4">
+            <a
+              href={item.certificate}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline transition-colors"
+            >
+              View Certificate
+              <ExternalLink size={14} />
+            </a>
+          </div>
         )}
       </div>
     </div>
