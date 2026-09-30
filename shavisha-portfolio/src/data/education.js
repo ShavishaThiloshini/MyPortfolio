@@ -14,6 +14,7 @@ const education = [
     startYear: 2025,
     endYear: 2026,
     status: 'Completed',
+    certificate: '/HND in SE.pdf',
   },
   {
     id: 'diploma-it',
